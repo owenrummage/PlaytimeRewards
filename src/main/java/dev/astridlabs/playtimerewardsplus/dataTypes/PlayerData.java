@@ -60,7 +60,6 @@ public class PlayerData {
     public void setLastLocation(Location lastLocation) {
         this.LastLocation = lastLocation;
     }
-
     public String getRepetitiveUnlocks(String timeRequired){
         String returnableString = "none";
         for(String reward : RepetitiveUnlocks){
@@ -88,4 +87,6 @@ public class PlayerData {
             }
         }
     }
+
+
 }
