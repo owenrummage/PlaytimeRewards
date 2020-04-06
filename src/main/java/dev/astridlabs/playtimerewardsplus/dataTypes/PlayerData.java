@@ -7,7 +7,9 @@ package dev.astridlabs.playtimerewardsplus.DataTypes;
 
 import org.bukkit.Location;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.UUID;
 
 public class PlayerData {
@@ -18,6 +20,8 @@ public class PlayerData {
 
     private Location CurrentLocation;
     private Location LastLocation;
+
+    private List<String> RepetitiveUnlocks = new ArrayList<String>();
 
     public PlayerData(UUID uuid, String DisplayName){
         this.uuid = uuid;
@@ -55,5 +59,33 @@ public class PlayerData {
     }
     public void setLastLocation(Location lastLocation) {
         this.LastLocation = lastLocation;
+    }
+
+    public String getRepetitiveUnlocks(String timeRequired){
+        String returnableString = "none";
+        for(String reward : RepetitiveUnlocks){
+            if(reward.split(":")[0].equals(timeRequired)){
+                returnableString = reward;
+            }
+        }
+
+        return returnableString;
+
+    }
+    public void setRepetitiveUnlocks(String timeRequired, Integer times){
+        for(int i = 0; i<RepetitiveUnlocks.size(); i++){
+            String reward = RepetitiveUnlocks.get(i);
+
+            if(reward.split(":")[0].equals(timeRequired)){
+                StringBuilder sb = new StringBuilder();
+
+                sb.append(timeRequired);
+                sb.append(":");
+                sb.append(times);
+
+                RepetitiveUnlocks.set(i, sb.toString());
+
+            }
+        }
     }
 }
