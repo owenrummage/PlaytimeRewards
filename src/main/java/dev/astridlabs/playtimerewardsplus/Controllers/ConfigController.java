@@ -1,14 +1,19 @@
 package dev.astridlabs.playtimerewardsplus.Controllers;
 
 import dev.astridlabs.playtimerewardsplus.DataTypes.PlayerData;
+import dev.astridlabs.playtimerewardsplus.DataTypes.Reward;
 import dev.astridlabs.playtimerewardsplus.Plugin;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 
 public class ConfigController {
@@ -56,13 +61,26 @@ public class ConfigController {
 
     }
 
+
+
+    public List<Reward> getRewards(){
+        List<Reward> returnList = new ArrayList<Reward>();
+        if (!customConfig.getConfigurationSection("rewards").getKeys(false).isEmpty()) {
+            customConfig.getConfigurationSection("rewards").getKeys(false).forEach((str) -> {
+                returnList.add(new Reward(Integer.parseInt(str), customConfig.getBoolean("rewards." + str + ".doesRepeat"), customConfig.getString("rewards." + str + ".message"), customConfig.getStringList("rewards." + str + ".commands")));
+            });
+        }
+
+        return returnList;
+    }
+
     public String getSavedX(UUID uuid){
-        return this.customConfig.getString("data."+uuid.toString()+"lastLocation.X");
+        return this.customConfig.getString("data."+uuid.toString()+".lastLocation.X");
     }
     public String getSavedY(UUID uuid){
-        return this.customConfig.getString("data."+uuid.toString()+"lastLocation.Y");
+        return this.customConfig.getString("data."+uuid.toString()+".lastLocation.Y");
     }
     public String getSavedZ(UUID uuid){
-        return this.customConfig.getString("data."+uuid.toString()+"lastLocation.Z");
+        return this.customConfig.getString("data."+uuid.toString()+".lastLocation.Z");
     }
 }

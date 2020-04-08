@@ -1,8 +1,6 @@
 package dev.astridlabs.playtimerewardsplus;
 
-import dev.astridlabs.playtimerewardsplus.Commands.CommandPlaytime;
-import dev.astridlabs.playtimerewardsplus.Commands.CommandSeen;
-import dev.astridlabs.playtimerewardsplus.Commands.Debug;
+import dev.astridlabs.playtimerewardsplus.Commands.*;
 import dev.astridlabs.playtimerewardsplus.Controllers.ConfigController;
 import dev.astridlabs.playtimerewardsplus.Controllers.PlayerDatabase;
 import dev.astridlabs.playtimerewardsplus.Events.PlayerJoin;
@@ -56,6 +54,8 @@ public class Plugin extends JavaPlugin {
         this.getCommand("pt").setExecutor(new CommandPlaytime(this));
         this.getCommand("ptdebug").setExecutor(new Debug(this));
         this.getCommand("ptseen").setExecutor(new CommandSeen(this));
+        this.getCommand("ptleader").setExecutor(new CommandPlaytimeLeaderboard(this));
+        this.getCommand("ptinfo").setExecutor(new CommandPluginInfo(this));
 
     }
 

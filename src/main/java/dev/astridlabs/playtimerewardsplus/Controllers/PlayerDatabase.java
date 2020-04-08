@@ -10,9 +10,7 @@ import dev.astridlabs.playtimerewardsplus.Plugin;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 
 public class PlayerDatabase {
@@ -33,6 +31,26 @@ public class PlayerDatabase {
             }
         }
         return returnedPlayer;
+    }
+
+    class Sortbyroll implements Comparator<PlayerData>
+    {
+        // Used for sorting in ascending order of
+        // roll number
+        public int compare(PlayerData a, PlayerData b)
+        {
+            return b.getPlaytime() - a.getPlaytime();
+        }
+    }
+
+    public List<PlayerData> getSortedPlayerlist(){
+        List<PlayerData> sorted = new ArrayList<PlayerData>();
+
+        sorted.addAll(playerList);
+        Collections.sort(sorted, new Sortbyroll());
+
+        return sorted;
+
     }
 
 

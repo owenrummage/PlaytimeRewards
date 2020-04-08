@@ -25,8 +25,8 @@ public class CommandSeen implements CommandExecutor {
             Player mentioned = Bukkit.getPlayer(pName);
 
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&8--------&7 "+mentioned.getDisplayName()+" &8--------"));
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&aPlayers Playtime: &7"+Integer.toString(plugin.db.getPlayer(mentioned.getUniqueId()).getPlaytime()/3600)+" Hours"));
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&aPlayers Logoff Location (X,Y,Z): &7"+plugin.config.getSavedX(mentioned.getUniqueId())+" "+plugin.config.getSavedY(mentioned.getUniqueId())+" "+plugin.config.getSavedZ(mentioned.getUniqueId())));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&Playtime: &7"+Integer.toString(plugin.db.getPlayer(mentioned.getUniqueId()).getPlaytime()/3600)+" Hours"));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&aLogoff Location (X,Y,Z): &7"+plugin.config.getSavedX(mentioned.getUniqueId())+" "+plugin.config.getSavedY(mentioned.getUniqueId())+" "+plugin.config.getSavedZ(mentioned.getUniqueId())));
 
 
         }

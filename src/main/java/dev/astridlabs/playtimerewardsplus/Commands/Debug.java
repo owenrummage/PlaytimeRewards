@@ -30,7 +30,7 @@ public class Debug implements CommandExecutor {
 
             }
 
-            if(args[0].equals("location")){
+            if(args[0].equals("save")){
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+DebugPrefix + "&aForce dumping memory to disk, this could cause file corruption"));
                 plugin.config.savePlayers();
 
