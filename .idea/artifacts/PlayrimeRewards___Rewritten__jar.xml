@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="PlayrimeRewards+ (Rewritten):jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PlayrimeRewards___Rewritten__jar</output-path>
+    <root id="archive" name="PlayrimeRewards+ (Rewritten).jar">
+      <element id="module-output" name="PlayrimeRewards+ (Rewritten)" />
+    </root>
+  </artifact>
+</component>

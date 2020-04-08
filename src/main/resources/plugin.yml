@@ -1,5 +1,17 @@
-name: PlaytimeRewards+(Rewritten)
+main: dev.astridlabs.playtimerewardsplus.Plugin
+name: PlaytimeRewardsRewrittenPlus
 author: Astrid (O_dude)
-version: 0.1
+version: 0.1a
 
 commands:
+  pt:
+    description: This command shows your current playtime
+    usage: /pt
+  ptdebug:
+    description: This is a debug command for debugging stuff
+    usage: /ptdebug
+  ptseen:
+    description: Get information about a player
+    usage: /ptseen
+
+softdepend: [PlaceholderAPI] # This is used, if your plugin works without PlaceholderAPI.

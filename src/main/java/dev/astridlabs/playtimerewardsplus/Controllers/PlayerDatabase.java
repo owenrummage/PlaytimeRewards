@@ -6,6 +6,7 @@
 package dev.astridlabs.playtimerewardsplus.Controllers;
 
 import dev.astridlabs.playtimerewardsplus.DataTypes.PlayerData;
+import dev.astridlabs.playtimerewardsplus.Plugin;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -13,8 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+
 public class PlayerDatabase {
     public List<PlayerData> playerList = new ArrayList<PlayerData>();
+    public Plugin plugin;
+
+    public PlayerDatabase(Plugin plugin){
+        this.plugin = plugin;
+    }
+
 
     public PlayerData getPlayer(UUID uuid){
         PlayerData returnedPlayer = null;

@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class PlayerData {
 
-    private Integer Playtime;
+    private int Playtime = 0;
     private UUID uuid;
     private String DisplayName;
 
