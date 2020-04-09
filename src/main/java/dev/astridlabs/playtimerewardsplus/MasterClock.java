@@ -1,7 +1,6 @@
 package dev.astridlabs.playtimerewardsplus;
 
 import dev.astridlabs.playtimerewardsplus.DataTypes.PlayerData;
-import dev.astridlabs.playtimerewardsplus.Plugin;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 

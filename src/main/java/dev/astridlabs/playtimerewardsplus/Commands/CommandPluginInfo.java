@@ -19,9 +19,13 @@ public class CommandPluginInfo implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player player = (Player) sender;
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&8[&6Playtime Rewards&7+&8]"));
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"This plugin was developed by: &aAstrid (O_dude)"));
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"Current Plugin Version: &70.01a"));
+            if(player.hasPermission("playtimerewards.ptinfo") || player.hasPermission("playtimerewards.user")){
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&8[&6Playtime Rewards&7+&8]"));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"This plugin was developed by: &aAstrid (O_dude)"));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"Current Plugin Version: &7"+plugin.getDescription().getVersion()));
+            }else{
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&c You do not have permission to use this command"));
+            }
         }
 
         return true;

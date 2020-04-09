@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,11 +30,16 @@ public class ConfigController {
 
     public void savePlayers(){
         for (PlayerData player : plugin.db.playerList) {
-            customConfig.set("data."+player.getUuid()+".playtime", player.getPlaytime());
-            customConfig.set("data."+player.getUuid()+".displayName", player.getDisplayName());
-            customConfig.set("data."+player.getUuid()+".lastLocation.X", player.getCurrentLocation().getBlockX());
-            customConfig.set("data."+player.getUuid()+".lastLocation.Y", player.getCurrentLocation().getBlockY());
-            customConfig.set("data."+player.getUuid()+".lastLocation.Z", player.getCurrentLocation().getBlockZ());
+            if(player.getCurrentLocation() == null){
+                customConfig.set("data."+player.getUuid()+".playtime", player.getPlaytime());
+                customConfig.set("data."+player.getUuid()+".displayName", player.getDisplayName());
+            }else{
+                customConfig.set("data."+player.getUuid()+".playtime", player.getPlaytime());
+                customConfig.set("data."+player.getUuid()+".displayName", player.getDisplayName());
+                customConfig.set("data."+player.getUuid()+".lastLocation.X", player.getCurrentLocation().getBlockX());
+                customConfig.set("data."+player.getUuid()+".lastLocation.Y", player.getCurrentLocation().getBlockY());
+                customConfig.set("data."+player.getUuid()+".lastLocation.Z", player.getCurrentLocation().getBlockZ());
+            }
         }
         try {
             customConfig.save(customConfigFile);
@@ -61,7 +67,30 @@ public class ConfigController {
 
     }
 
+    public List<PlayerData> getPlayersFromConfig(){
+        List<PlayerData> returnList = new ArrayList<PlayerData>();
 
+        if (!customConfig.getConfigurationSection("data").getKeys(false).isEmpty()) {
+            customConfig.getConfigurationSection("data").getKeys(false).forEach(str -> {
+                plugin.db.CreatePlayerRaw(new PlayerData(UUID.fromString(str), customConfig.getString("data."+str+".displayName"), customConfig.getInt("data."+str+".playtime")));
+            });
+        }
+
+        return returnList;
+    }
+
+    public String getWelcomeBackMessage(Player player){
+        return customConfig.getString("Config.WelcomeMessage.WelcomeBackMessage").replace("%player%", player.getDisplayName());
+    }
+
+    public String getFirstTimeWelcomeMessage(Player player){
+        return customConfig.getString("Config.WelcomeMessage.FirstTimeWelcomeMessage").replace("%player%", player.getDisplayName());
+
+    }
+
+    public boolean isWelcomeMesageEnabled(){
+        return customConfig.getBoolean("Config.WelcomeMessage.Override");
+    }
 
     public List<Reward> getRewards(){
         List<Reward> returnList = new ArrayList<Reward>();

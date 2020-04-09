@@ -1,6 +1,15 @@
 Config:
   PluginChatPrefix: "&7[&6PTRR+&7]"
   PlaceholderChatPrefix: "&8[%time%&8]&f"
+  WelcomeMessage:
+    Override: true
+    FirstTimeWelcomeMessage: "&aWelcome to the server, %player%"
+    WelcomeBackMessage:  "&aWelcome back, %player%"
+rewards: {}
 
+
+
+
+
+#NEVER TOUCH THIS EVER
 data: {}
-rewards:

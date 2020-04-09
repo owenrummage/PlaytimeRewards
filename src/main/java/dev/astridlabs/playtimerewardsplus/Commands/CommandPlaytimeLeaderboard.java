@@ -22,14 +22,19 @@ public class CommandPlaytimeLeaderboard implements CommandExecutor {
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
-
-            int i = 0;
-            for (PlayerData pl : plugin.db.getSortedPlayerlist()){
-                if(i<5){
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&a"+pl.getDisplayName()+"&8| "+Integer.toString(pl.getPlaytime()/3600)));
-                    i++;
+            if(player.hasPermission("playtimerewards.ptleader") || player.hasPermission("playtimerewards.user")) {
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&8-------- &7Leaderboard &8--------"));
+                int i = 0;
+                for (PlayerData pl : plugin.db.getSortedPlayerlist()){
+                    if(i<9){
+                        if((pl.getPlaytime()/3600) > 0){
+                            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&a"+pl.getDisplayName()+"&8 :   "+" &7"+Integer.toString(pl.getPlaytime()/3600))+" Hours");
+                            i++;
+                        }
+                    }
                 }
-                i++;
+            }else{
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&c You do not have permission to use this command"));
             }
         }
 

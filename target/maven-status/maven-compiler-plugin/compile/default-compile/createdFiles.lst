@@ -1,0 +1,15 @@
+dev/astridlabs/playtimerewardsplus/Commands/CommandPluginInfo.class
+dev/astridlabs/playtimerewardsplus/Integrations/PlaceholderAPIIntegration.class
+dev/astridlabs/playtimerewardsplus/Commands/CommandPlaytime.class
+dev/astridlabs/playtimerewardsplus/Events/PlayerJoin.class
+dev/astridlabs/playtimerewardsplus/DataTypes/Reward.class
+dev/astridlabs/playtimerewardsplus/DataTypes/PlayerData.class
+dev/astridlabs/playtimerewardsplus/Controllers/PlayerDatabase$Sortbyroll.class
+dev/astridlabs/playtimerewardsplus/Commands/CommandPlaytimeLeaderboard.class
+dev/astridlabs/playtimerewardsplus/Controllers/ConfigController.class
+dev/astridlabs/playtimerewardsplus/Commands/Debug.class
+dev/astridlabs/playtimerewardsplus/Controllers/RewardManager.class
+dev/astridlabs/playtimerewardsplus/Commands/CommandSeen.class
+dev/astridlabs/playtimerewardsplus/Plugin.class
+dev/astridlabs/playtimerewardsplus/MasterClock.class
+dev/astridlabs/playtimerewardsplus/Controllers/PlayerDatabase.class

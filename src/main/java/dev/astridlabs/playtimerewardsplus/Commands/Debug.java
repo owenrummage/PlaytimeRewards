@@ -2,11 +2,15 @@ package dev.astridlabs.playtimerewardsplus.Commands;
 
 import dev.astridlabs.playtimerewardsplus.DataTypes.PlayerData;
 import dev.astridlabs.playtimerewardsplus.Plugin;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.List;
+import java.util.UUID;
 
 public class Debug implements CommandExecutor {
     private Plugin plugin;
@@ -20,6 +24,8 @@ public class Debug implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if(sender instanceof Player){
             Player player = (Player) sender;
+
+            if(!player.hasPermission("playtimerewards.debug")) player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&c You do not have permission to use this command"));
             if(args[0].equals("time")){
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+DebugPrefix + "&aUser playtime in seconds is: "+this.plugin.db.getPlayer(player.getUniqueId()).getPlaytime()));
             }
@@ -34,6 +40,18 @@ public class Debug implements CommandExecutor {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+DebugPrefix + "&aForce dumping memory to disk, this could cause file corruption"));
                 plugin.config.savePlayers();
 
+            }
+
+            if(args[0].equals("rawdata")){
+                List<PlayerData> playerDataList = plugin.db.getSortedPlayerlist();
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+DebugPrefix + "&aPlayer UUID: &7"+ player.getUniqueId()));
+
+                for(PlayerData p : playerDataList){
+                    if(player.getUniqueId().toString().equals(p.getUuid().toString())){//FIXME: This is never called, meaning somehow the UUID's are not compatable with eachother
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+DebugPrefix + "&aYou are in the Database!"));
+                    }
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+DebugPrefix + "&aPlayer UUID: &7"+ p.getUuid()));
+                }
             }
         }
 

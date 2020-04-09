@@ -20,14 +20,16 @@ public class CommandSeen implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if(sender instanceof Player){
             Player player = (Player) sender;
+            if(player.hasPermission("playtimerewards.ptseen") || player.hasPermission("playtimerewards.admin")) {
+                String pName = args[0];
+                Player mentioned = Bukkit.getPlayer(pName);
 
-            String pName = args[0];
-            Player mentioned = Bukkit.getPlayer(pName);
-
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&8--------&7 "+mentioned.getDisplayName()+" &8--------"));
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&Playtime: &7"+Integer.toString(plugin.db.getPlayer(mentioned.getUniqueId()).getPlaytime()/3600)+" Hours"));
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&aLogoff Location (X,Y,Z): &7"+plugin.config.getSavedX(mentioned.getUniqueId())+" "+plugin.config.getSavedY(mentioned.getUniqueId())+" "+plugin.config.getSavedZ(mentioned.getUniqueId())));
-
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&8--------&7 "+mentioned.getDisplayName()+" &8--------"));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&Playtime: &7"+Integer.toString(plugin.db.getPlayer(mentioned.getUniqueId()).getPlaytime()/3600)+" Hours"));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&aLogoff Location (X,Y,Z): &7"+plugin.config.getSavedX(mentioned.getUniqueId())+" "+plugin.config.getSavedY(mentioned.getUniqueId())+" "+plugin.config.getSavedZ(mentioned.getUniqueId())));
+            }else{
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&c You do not have permission to use this command"));
+            }
 
         }
 

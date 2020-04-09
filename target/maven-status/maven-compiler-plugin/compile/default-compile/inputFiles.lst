@@ -1,0 +1,14 @@
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Controllers/ConfigController.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Controllers/RewardManager.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Commands/CommandPlaytimeLeaderboard.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/MasterClock.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/DataTypes/Reward.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Commands/Debug.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/DataTypes/PlayerData.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Integrations/PlaceholderAPIIntegration.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Controllers/PlayerDatabase.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Commands/CommandPluginInfo.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Commands/CommandPlaytime.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Commands/CommandSeen.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Plugin.java
+/Users/owen/IdeaProjects/PlayrimeRewards+ (Rewritten)/src/main/java/dev/astridlabs/playtimerewardsplus/Events/PlayerJoin.java

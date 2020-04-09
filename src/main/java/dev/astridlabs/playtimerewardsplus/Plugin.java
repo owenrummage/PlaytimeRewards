@@ -39,9 +39,11 @@ public class Plugin extends JavaPlugin {
         }
 
 
+        //FIXME: This does not actually load the players
+        db.loadPlayers();
 
-        PlaceholderChatPrefix = getConfig().getString("Config.PlaceholderChatPrefix")+"  ";
-        PluginChatPrefix = getConfig().getString("Config.PluginChatPrefix")+"  ";
+        PlaceholderChatPrefix = getConfig().getString("Config.PlaceholderChatPrefix")+" ";
+        PluginChatPrefix = getConfig().getString("Config.PluginChatPrefix")+" ";
         //Initialize Events
         Bukkit.getPluginManager().registerEvents(new PlayerJoin(this), this); // This fires the event and allows any listener to listen to the event
 

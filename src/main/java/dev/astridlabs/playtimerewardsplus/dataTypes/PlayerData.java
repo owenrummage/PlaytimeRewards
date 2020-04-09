@@ -14,7 +14,7 @@ import java.util.UUID;
 
 public class PlayerData {
 
-    private int Playtime = 0;
+    private int Playtime;
     private UUID uuid;
     private String DisplayName;
 
@@ -23,9 +23,10 @@ public class PlayerData {
 
     private List<String> RepetitiveUnlocks = new ArrayList<String>();
 
-    public PlayerData(UUID uuid, String DisplayName){
+    public PlayerData(UUID uuid, String DisplayName, Integer playtime){
         this.uuid = uuid;
         this.DisplayName = DisplayName;
+        this.Playtime = playtime;
 
     }
 

@@ -1,7 +1,7 @@
 main: dev.astridlabs.playtimerewardsplus.Plugin
 name: PlaytimeRewardsRewrittenPlus
 author: Astrid (O_dude)
-version: 0.1a
+version: 1.0b
 
 commands:
   pt:
@@ -20,4 +20,4 @@ commands:
     description: Get current top 5 leaderboard
     usage: /ptleader
 
-softdepend: [PlaceholderAPI] # This is used, if your plugin works without PlaceholderAPI.
+softdepend: [PlaceholderAPI]

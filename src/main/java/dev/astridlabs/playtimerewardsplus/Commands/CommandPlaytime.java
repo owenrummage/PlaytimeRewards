@@ -20,12 +20,16 @@ public class CommandPlaytime implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if(sender instanceof Player){
             Player player = (Player) sender;
-            if(args.length > 0){
-                Player mentioned = Bukkit.getPlayer(args[0]);
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix + "&a"+args[0]+"'s current playtime is: &7"+Integer.toString(plugin.db.getPlayer(mentioned.getUniqueId()).getPlaytime()/3600)+" Hours"));
+            if(player.hasPermission("playtimerewards.pt") || player.hasPermission("playtimerewards.user")) {
+                if(args.length > 0){
+                    Player mentioned = Bukkit.getPlayer(args[0]);
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix + "&a"+args[0]+"'s current playtime is: &7"+Integer.toString(plugin.db.getPlayer(mentioned.getUniqueId()).getPlaytime()/3600)+" Hours"));
 
+                }else{
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix + "&aYour current playtime is: &7"+Integer.toString(plugin.db.getPlayer(player.getUniqueId()).getPlaytime()/3600)+" Hours"));
+                }
             }else{
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix + "&aYour current playtime is: &7"+Integer.toString(plugin.db.getPlayer(player.getUniqueId()).getPlaytime()/3600)+" Hours"));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+"&c You do not have permission to use this command"));
             }
         }
 

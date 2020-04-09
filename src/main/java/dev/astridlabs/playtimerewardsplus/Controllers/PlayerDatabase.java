@@ -26,11 +26,17 @@ public class PlayerDatabase {
         PlayerData returnedPlayer = null;
 
         for (PlayerData player : playerList) {
-            if(player.getUuid() == uuid){
+            if(player.getUuid().toString().equals(uuid.toString())){
                 returnedPlayer = player;
             }
         }
         return returnedPlayer;
+    }
+
+    public void loadPlayers(){
+        for(PlayerData player : plugin.config.getPlayersFromConfig()){
+            playerList.add(player);
+        }
     }
 
     class Sortbyroll implements Comparator<PlayerData>
@@ -71,10 +77,27 @@ public class PlayerDatabase {
         player.setLastLocation(lastLocation);
     }
 
+    public boolean playerExists(UUID uuid){
+        boolean returnState = false;
 
-    public PlayerData createPlayer(Player player){
-        playerList.add(new PlayerData(player.getUniqueId(), player.getDisplayName()));
-        return getPlayer(player.getUniqueId());
+        for (PlayerData player : playerList) {
+            if(player.getUuid().toString().equals(uuid.toString())){
+                returnState = true;
+            }
+        }
+
+        return returnState;
+    }
+
+    public void createPlayer(Player player){
+        if(playerExists(player.getUniqueId()) == false){
+            playerList.add(new PlayerData(player.getUniqueId(), player.getDisplayName(), 0));
+        }
+        return;
+    }
+
+    public void CreatePlayerRaw(PlayerData playerData){
+        playerList.add(playerData);
     }
 
 }

@@ -1,7 +1,9 @@
 package dev.astridlabs.playtimerewardsplus.Events;
 
 import dev.astridlabs.playtimerewardsplus.Plugin;
+
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -17,7 +19,13 @@ public class PlayerJoin implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event)
     {
-        event.setJoinMessage("Welcome, " + event.getPlayer().getName() + "!");
+        if(plugin.config.isWelcomeMesageEnabled()){
+            if(plugin.db.playerExists(event.getPlayer().getUniqueId())){
+                event.setJoinMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+plugin.config.getWelcomeBackMessage(event.getPlayer())));
+            }else{
+                event.setJoinMessage(ChatColor.translateAlternateColorCodes('&', plugin.PluginChatPrefix+plugin.config.getFirstTimeWelcomeMessage(event.getPlayer())));
+            }
+        }
         plugin.db.createPlayer(event.getPlayer());
     }
 }
